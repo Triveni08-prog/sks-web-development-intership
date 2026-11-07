@@ -1,16 +1,310 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKS Web Development Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKS Web Development Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f5fa;color:#25243a}
+header{background:#21143d;color:white;padding:25px;text-align:center}
+header p{margin-top:8px;color:#d8cafa}
+nav{background:#39245d;padding:15px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#e6bdff}
+.hero{text-align:center;padding:55px 15px;background:linear-gradient(135deg,#39245d,#8255b5);color:white}
+.hero h1{font-size:32px;margin-bottom:12px}
+.hero p{line-height:1.7}
+.container{max-width:1100px;margin:auto;padding:25px 15px}
+.section{background:white;padding:25px;margin:22px 0;border-radius:14px;box-shadow:0 3px 15px #0000000b}
+h2{color:#56358b;margin-bottom:18px}
+h3{margin-bottom:10px}
+p{line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#faf8ff;border:1px solid #eee6fa;border-radius:12px;padding:20px}
+button{background:#7044ad;color:white;border:0;padding:11px 17px;border-radius:7px;cursor:pointer;margin-top:10px}
+button:hover{background:#4d287e}
+input,textarea,select{width:100%;padding:12px;margin:8px 0 14px;border:1px solid #ddd;border-radius:7px;font:inherit}
+textarea{min-height:100px}
+.product{border:1px solid #eee;padding:15px;border-radius:10px}
+.price{color:#7141a9;font-weight:bold}
+.post{padding:15px;border-bottom:1px solid #eee}
+.small{color:#777;font-size:13px}
+footer{text-align:center;background:#21143d;color:white;padding:25px}
+#message{color:#39834d;margin-top:10px}
+</style>
 </head>
-    <script src="script.js"></script>
 <body>
 
-    <h1>Welcome to My Web Development Project</h1>
-    <p>Six web development tasks in one website.</p>
+<header>
+<h1>SKS Web Development Hub</h1>
+<p>Web Development Internship Project | Six Tasks in One</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#shop">E-commerce</a>
+<a href="#forms">Forms</a>
+<a href="#blog">Blog</a>
+<a href="#interactive">Interactive App</a>
+</nav>
+
+<section class="hero" id="home">
+<h1>Welcome to My Web Development Hub</h1>
+<p>Explore my portfolio, online store, forms, blog and interactive applications.</p>
+<button onclick="document.querySelector('#portfolio').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+</section>
+
+<main class="container">
+
+<!-- TASK 1: PORTFOLIO -->
+<section class="section" id="portfolio">
+<h2>Task 1: Personal Portfolio</h2>
+<div class="grid">
+<div class="card">
+<h3>About Me</h3>
+<p>Hello! I am a web development enthusiast learning HTML, CSS and JavaScript.</p>
+</div>
+<div class="card">
+<h3>My Skills</h3>
+<p>HTML5 | CSS3 | JavaScript | Responsive Design | UI/UX</p>
+</div>
+<div class="card">
+<h3>My Goal</h3>
+<p>To create useful, creative and user-friendly websites.</p>
+</div>
+</div>
+</section>
+
+<!-- TASK 2: ECOMMERCE -->
+<section class="section" id="shop">
+<h2>Task 2: E-commerce Store</h2>
+<input id="search" placeholder="Search products..." oninput="showProducts()">
+<div class="grid" id="products"></div>
+<h3 style="margin-top:20px">Shopping Cart</h3>
+<div id="cart">Your cart is empty.</div>
+<h3 id="total">Total: ₹0</h3>
+<button onclick="clearCart()">Clear Cart</button>
+</section>
+
+<!-- TASK 3: NAVIGATION -->
+<section class="section" id="navigation">
+<h2>Task 3: Navigation Menu</h2>
+<p>This responsive navigation menu connects all six project sections. Try the links in the top menu.</p>
+<div class="grid">
+<div class="card"><a href="#portfolio">Go to Portfolio</a></div>
+<div class="card"><a href="#shop">Go to Store</a></div>
+<div class="card"><a href="#forms">Go to Forms</a></div>
+<div class="card"><a href="#blog">Go to Blog</a></div>
+<div class="card"><a href="#interactive">Go to Interactive App</a></div>
+</div>
+</section>
+
+<!-- TASK 4: FORMS -->
+<section class="section" id="forms">
+<h2>Task 4: HTML Forms</h2>
+<form id="contactForm">
+<label>Full Name</label>
+<input id="name" type="text" placeholder="Enter your name" required>
+<label>Email Address</label>
+<input id="email" type="email" placeholder="Enter your email" required>
+<label>Choose your subject</label>
+<select id="subject" required>
+<option value="">Select subject</option>
+<option>Web Development</option>
+<option>Portfolio</option>
+<option>General Enquiry</option>
+</select>
+<label>Message</label>
+<textarea id="contactMessage" placeholder="Write your message..." required></textarea>
+<label><input type="checkbox" required style="width:auto"> I agree to submit this form.</label>
+<button type="submit">Submit Form</button>
+<p id="message"></p>
+</form>
+</section>
+
+<!-- TASK 5: BLOG -->
+<section class="section" id="blog">
+<h2>Task 5: Blogging Platform</h2>
+<form id="blogForm">
+<input id="blogTitle" placeholder="Blog title" required>
+<textarea id="blogContent" placeholder="Write your blog..." required></textarea>
+<button type="submit">Publish Blog</button>
+</form>
+<div id="posts"></div>
+</section>
+
+<!-- TASK 6: INTERACTIVE APP -->
+<section class="section" id="interactive">
+<h2>Task 6: Interactive Web Application</h2>
+<div class="grid">
+<div class="card">
+<h3>Live Counter</h3>
+<h2 id="counter">0</h2>
+<button onclick="changeCounter(1)">Increase +</button>
+<button onclick="changeCounter(-1)">Decrease -</button>
+<button onclick="resetCounter()">Reset</button>
+</div>
+<div class="card">
+<h3>Live Clock</h3>
+<h2 id="clock">00:00:00</h2>
+<p>Current browser time</p>
+</div>
+<div class="card">
+<h3>Background Changer</h3>
+<p>Change this section's background.</p>
+<button onclick="changeBackground()">Change Color</button>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<h3>SKS Web Development Hub</h3>
+<p>Learning • Creating • Developing</p>
+<p class="small">Six-task integrated web development project</p>
+</footer>
+
+<script>
+const productList=[
+{id:1,name:"Classic Notebook",price:150},
+{id:2,name:"Wireless Mouse",price:499},
+{id:3,name:"Desk Organizer",price:299},
+{id:4,name:"Water Bottle",price:199},
+{id:5,name:"Study Lamp",price:599},
+{id:6,name:"Headphones",price:799}
+];
+
+let cart=JSON.parse(localStorage.getItem("sksCart")||"[]");
+let posts=JSON.parse(localStorage.getItem("sksPosts")||"[]");
+let counter=0;
+
+function showProducts(){
+const query=document.getElementById("search").value.toLowerCase();
+const filtered=productList.filter(p=>p.name.toLowerCase().includes(query));
+document.getElementById("products").innerHTML=filtered.map(p=>`
+<div class="product">
+<h3>${p.name}</h3>
+<p class="price">₹${p.price}</p>
+<button onclick="addCart(${p.id})">Add to Cart</button>
+</div>`).join("")||"<p>No products found.</p>";
+}
+
+function addCart(id){
+const product=productList.find(p=>p.id===id);
+const existing=cart.find(p=>p.id===id);
+if(existing) existing.quantity++;
+else cart.push({...product,quantity:1});
+saveCart();
+}
+
+function saveCart(){
+localStorage.setItem("sksCart",JSON.stringify(cart));
+showCart();
+}
+
+function showCart(){
+const box=document.getElementById("cart");
+if(!cart.length){box.textContent="Your cart is empty.";document.getElementById("total").textContent="Total: ₹0";return;}
+box.innerHTML=cart.map(p=>`
+<div class="post">
+${p.name} — ₹${p.price} × ${p.quantity}
+<button onclick="removeCart(${p.id})">Remove</button>
+<button onclick="updateQuantity(${p.id},1)">+</button>
+<button onclick="updateQuantity(${p.id},-1)">-</button>
+</div>`).join("");
+const total=cart.reduce((sum,p)=>sum+p.price*p.quantity,0);
+document.getElementById("total").textContent="Total: ₹"+total;
+}
+
+function updateQuantity(id,change){
+const item=cart.find(p=>p.id===id);
+if(!item)return;
+item.quantity+=change;
+cart=cart.filter(p=>p.quantity>0);
+saveCart();
+}
+
+function removeCart(id){
+cart=cart.filter(p=>p.id!==id);
+saveCart();
+}
+
+function clearCart(){
+cart=[];
+saveCart();
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+e.preventDefault();
+document.getElementById("message").textContent=
+"Thank you, "+document.getElementById("name").value+"! Your form has been validated.";
+this.reset();
+});
+
+document.getElementById("blogForm").addEventListener("submit",function(e){
+e.preventDefault();
+posts.unshift({
+id:Date.now(),
+title:document.getElementById("blogTitle").value,
+content:document.getElementById("blogContent").value
+});
+localStorage.setItem("sksPosts",JSON.stringify(posts));
+this.reset();
+showPosts();
+});
+
+function showPosts(){
+document.getElementById("posts").innerHTML=posts.map(p=>`
+<div class="post">
+<h3>${escapeHTML(p.title)}</h3>
+<p>${escapeHTML(p.content)}</p>
+<button onclick="deletePost(${p.id})">Delete</button>
+</div>`).join("");
+}
+
+function deletePost(id){
+posts=posts.filter(p=>p.id!==id);
+localStorage.setItem("sksPosts",JSON.stringify(posts));
+showPosts();
+}
+
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function changeCounter(amount){
+counter+=amount;
+document.getElementById("counter").textContent=counter;
+}
+
+function resetCounter(){
+counter=0;
+document.getElementById("counter").textContent=counter;
+}
+
+function changeBackground(){
+const colors=["#fce4ec","#e8eaf6","#e0f2f1","#fff3e0","#ede7f6"];
+const color=colors[Math.floor(Math.random()*colors.length)];
+document.getElementById("interactive").style.background=color;
+}
+
+function updateClock(){
+document.getElementById("clock").textContent=new Date().toLocaleTimeString();
+}
+
+showProducts();
+showCart();
+showPosts();
+updateClock();
+setInterval(updateClock,1000);
+</script>
 
 </body>
-</html>
+    </html>
+                        
